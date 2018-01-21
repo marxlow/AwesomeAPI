@@ -1,11 +1,11 @@
 var webpack = require('webpack');
 var path = require('path');
-var outputFile = 'commandiv-api.js';
+var outputFile = 'awesomeapi.js';
 var fs = require('fs');
 
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var env = process.env.WEBPACK_ENV;
-var libraryName = 'commandiv-api';
+var libraryName = 'awesomeapi';
 
 var outputFile;
 var plugins = [ ];

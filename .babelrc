@@ -6,6 +6,7 @@
     ["module-resolver", {
       "root": ["."],
       "alias": {
+        "services": "./src/services",
         "methods": "./src/methods",
         "controllers": "./src/controllers",
         "constants": "./src/constants",

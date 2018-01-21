@@ -1,0 +1,22 @@
+[ignore]
+<PROJECT_ROOT>/__tests__/.*
+<PROJECT)ROOT>/__mocks__/.*
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+include_warnings=true
+emoji=true
+esproposal.export_star_as=enable
+module.name_mapper='^services' -> '<PROJECT_ROOT>/src/services'
+module.name_mapper='^methods' -> '<PROJECT_ROOT>/src/methods'
+module.name_mapper='^controllers' ->'<PROJECT_ROOT>/src/controllers'
+module.name_mapper='^__mocks__' ->'<PROJECT_ROOT>/__mocks__'
+module.name_mapper='^__tests__' ->'<PROJECT_ROOT>/__tests__'
+module.name_mapper='^constants' ->'<PROJECT_ROOT>/src/constants'
+module.system=node
+suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore
+[strict]
