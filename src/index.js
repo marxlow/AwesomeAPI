@@ -1,4 +1,4 @@
-//@flow
+// @flow
 
 import 'babel-polyfill';
 
@@ -14,13 +14,13 @@ if (process.env.NODE_ENV === 'local') {
 
 let app = express();
 
-/* Set up apps with routers */
+/* Creates server and web socket */
+const server = http.createServer(app);
+
+/* Set up apps with routers and their root URLs here */
 app.use('/twitter', twitterRouter);
 app.use('/coinbase', coinbaseRouter);
 app.use('/gdax', gdaxRouter);
-
-/* Set up server */
-const server = http.createServer(app);
 
 
 /* Initialize server locally */

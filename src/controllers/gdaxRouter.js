@@ -12,7 +12,7 @@ gdaxRouter.use(timeLog); // Logs the time when the gdaxRouter is called
 gdaxRouter.get('/prices/:currency', async (req, res) => {
   try {
     const { currency } = req.params;
-    const result = await gdax.prices.getAll({ currency });
+    const result = await gdax.prices.getSpotAll({ currency });
     res.status(200).send(result);
   } catch (error) {
     res.status(500).send({ error: error.message });
