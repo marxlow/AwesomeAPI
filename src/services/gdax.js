@@ -14,11 +14,11 @@ function gdax() {
 
   this.prices = {
     // Returns the current prices of all available currencies from Coinbase
-    getSpotAll: async({ currency }) => {
+    getSpotAll: async ({ currency }) => {
       if (currency.toUpperCase() !== 'USD') {
         throw new ('Error: We only allow USD for now');
       }
-      let result: object = { };
+      let result: object = {};
       for (let i = 0; i < GDAX_PRODUCTS.length; i++) {
         const product = appendCurrency(GDAX_PRODUCTS[i]); // from BTC to BTC-USD
         const url: string = `https://api-public.sandbox.gdax.com/products/${product}/trades`;
@@ -48,9 +48,12 @@ function initializeServer(currency) {
   }, 500));
 }
 
+/*
+ * If a currency does not end with 'USD', add 'USD' string to it.
+*/
 function appendCurrency(currency) {
   const currencyArray = currency.split('-');
-  // If currency does not end with 'USD', add 'USD' to it
+  
   if (currencyArray[1] !== 'USD') {
     return `${currency}-USD`;
   }

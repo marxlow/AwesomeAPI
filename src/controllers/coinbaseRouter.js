@@ -12,7 +12,17 @@ coinbaseRouter.use(timeLog); // Logs the time when the coinbaseRouter is called
 coinbaseRouter.get('/prices/:currency', async (req, res) => {
   try {
     const { currency } = req.params;
-    const result = await Coinbase.prices.getSpotAll({ currency });
+    const result = await Coinbase.prices.getSpotAll(currency);
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
+});
+
+coinbaseRouter.get('/exchange-rates/:currency', async (req, res) => {
+  try {
+    const { currency } = req.params;
+    const result = await Coinbase.exchanges.get(currency);
     res.status(200).send(result);
   } catch (error) {
     res.status(500).send({ error: error.message });

@@ -2,11 +2,13 @@
 
 import 'babel-polyfill';
 
-import coinbaseRouter from 'controllers/coinbaseRouter';
 import express from 'express';
-import gdaxRouter from 'controllers/gdaxRouter';
 import http from 'http';
+import currencyRouter from 'controllers/currencyRouter';
+import coinbaseRouter from 'controllers/coinbaseRouter';
+import gdaxRouter from 'controllers/gdaxRouter';
 import twitterRouter from 'controllers/twitterRouter';
+import Arbitrage from 'services/arbitrage';
 
 if (process.env.NODE_ENV === 'local') {
   require('dotenv').config();
@@ -18,8 +20,9 @@ let app = express();
 const server = http.createServer(app);
 
 /* Set up apps with routers and their root URLs here */
-app.use('/twitter', twitterRouter);
+app.use('/currency', currencyRouter);
 app.use('/coinbase', coinbaseRouter);
+app.use('/twitter', twitterRouter);
 app.use('/gdax', gdaxRouter);
 
 
@@ -30,3 +33,5 @@ server.listen(process.env.PORT, async(error) => {
   }
   console.log(`Server is ready on http://localhost:${process.env.PORT}`);
 });
+
+Arbitrage.btc.calculate(20000);
