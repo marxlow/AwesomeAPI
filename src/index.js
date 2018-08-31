@@ -27,6 +27,7 @@ app.use('/coinbase', coinbaseRouter);
 app.use('/twitter', twitterRouter);
 app.use('/gdax', gdaxRouter);
 
+console.log('> Here is your port: ', process.env.PORT);
 
 /* Initialize server locally */
 server.listen(process.env.PORT, async(error) => {
